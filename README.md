@@ -1,3 +1,6 @@
+[![Build Status](https://secure.travis-ci.org/rmannibucau/cdi-akka.png)](http://travis-ci.org/rmannibucau/cdi-akka)
+
+
 cdi-akka: Basic idea
 ====================
 
