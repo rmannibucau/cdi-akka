@@ -96,8 +96,6 @@ public class AkkaExtension implements Extension, Deactivatable {
                 new BeanBuilder<ActorSystem>(beanManager)
                         .qualifiers(qualifier)
                         .beanClass(ActorSystem.class)
-                        .passivationCapable(true)
-                        .id("Cdi_ActorSystem")
                         .scope(Dependent.class)
                         .name("actorSystem")
                         .beanLifecycle(new ActorSystemLifecycle(system))
