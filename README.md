@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/rmannibucau/cdi-akka.png)](http://travis-ci.org/rmannibucau/cdi-akka)
+[![Build Status](https://travis-ci.org/rmannibucau/cdi-akka.png?branch=master)](https://travis-ci.org/rmannibucau/cdi-akka)
 
 
 cdi-akka: Basic idea
