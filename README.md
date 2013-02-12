@@ -86,4 +86,4 @@ The module is activated by default but if you want to use only some part of it (
 you can deactivate the cdi extension using deltaspike deactivable mecanism
 on the extension com.github.rmannibucau.cdi.akka.internal.AkkaExtension.
 
-Note: The easier is probable to implement org.apache.deltaspike.core.spi.activation.ClassDeactivator.
+Note: The easier is probably to implement org.apache.deltaspike.core.spi.activation.ClassDeactivator.
