@@ -22,6 +22,8 @@ public class CdiCreator implements UntypedActorFactory {
 
     @Override
     public Actor create() throws Exception {
-        return Cdis.newDependentInstance(bm, clazz);
+        final ReleasableBean<? extends Actor> instance = Cdis.newDependentInstance(bm, clazz);
+        ReleasableBeans.add(instance);
+        return instance.getInstance();
     }
 }

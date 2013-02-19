@@ -10,7 +10,7 @@ final class Cdis {
         // no-op
     }
 
-    public static <T> T newDependentInstance(final BeanManager bm, final Class<T> clazz) {
+    public static <T> ReleasableBean<T> newDependentInstance(final BeanManager bm, final Class<T> clazz) {
         final Set<Bean<?>> beans = bm.getBeans(clazz);
         if (beans == null || beans.isEmpty()) {
             throw new IllegalStateException("Could not find actor " + clazz);
@@ -18,9 +18,6 @@ final class Cdis {
 
         final Bean<?> bean = bm.resolve(beans); // this line is quite complicated in pure scala and often = beans.iterator().next()
         final CreationalContext<?> creationalContext = bm.createCreationalContext(bean);
-        final T instance = clazz.cast(bm.getReference(bean, clazz, creationalContext));
-
-        creationalContext.release(); // actors are always @Dependent because not proxiable
-        return instance;
+        return new ReleasableBean<T>(creationalContext, clazz.cast(bm.getReference(bean, clazz, creationalContext)));
     }
 }
