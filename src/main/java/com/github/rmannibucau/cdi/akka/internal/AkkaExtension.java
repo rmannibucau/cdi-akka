@@ -134,6 +134,6 @@ public class AkkaExtension implements Extension, Deactivatable {
         }
         actorRefs.clear();
 
-        Releasables.release();
+        Cdis.release();
     }
 }
