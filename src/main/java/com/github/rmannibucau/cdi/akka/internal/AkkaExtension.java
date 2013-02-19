@@ -109,9 +109,7 @@ public class AkkaExtension implements Extension, Deactivatable {
         }
 
         if (hasActorSystem) {
-            final ReleasableBean<ActorSystem> actorSystem = Cdis.newDependentInstance(beanManager, ActorSystem.class);
-            system.set(actorSystem.getInstance());
-            ReleasableBeans.add(actorSystem);
+            system.set(Cdis.newDependentInstance(beanManager, ActorSystem.class));
         } else {
             system.set(ActorSystem.create("AkkaCdi"));
         }
@@ -136,6 +134,6 @@ public class AkkaExtension implements Extension, Deactivatable {
         }
         actorRefs.clear();
 
-        ReleasableBeans.release();
+        Releasables.release();
     }
 }
