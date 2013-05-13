@@ -3,7 +3,6 @@ package com.github.rmannibucau.cdi.akka.internal;
 import akka.actor.Actor;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
-import akka.actor.Props;
 import com.github.rmannibucau.cdi.akka.Akka;
 import org.apache.deltaspike.core.spi.activation.Deactivatable;
 import org.apache.deltaspike.core.util.ClassDeactivationUtils;
@@ -122,7 +121,7 @@ public class AkkaExtension implements Extension, Deactivatable {
 
     private <T extends Actor> void addActorRef(final BeanManager beanManager, final ProcessBean<T> actor) {
         final Class<T> beanClass = Class.class.cast(actor.getBean().getBeanClass());
-        final ActorRef actorRef = system.get().actorOf(new Props(beanClass).withCreator(new CdiCreator(beanManager, beanClass)), beanClass.getSimpleName());
+        final ActorRef actorRef = Actors.getActorRef(system.get(), beanManager, beanClass);
         actorRefs.put(beanClass, actorRef);
     }
 
